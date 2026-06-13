@@ -1,236 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Adithyan Jayaprasath | My Journey</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adithyan Jayaprasath | My Journey</title>
+    <meta name="description" content="Immersive cinematic portfolio of Adithyan Jayaprasath - Digital Marketing Executive based in Dubai, UAE.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
-
 <body>
 
-<div id="three-container"></div>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="sun"></div>
-
-<h1>Hello, I'm Adithyan</h1>
-
-<p>Scroll to walk through my journey</p>
-
-<div class="boy">🚶</div>
-
-</section>
-
-<!-- STORY SECTION -->
-
-<section class="story">
-
-<div class="road"></div>
-
-<!-- SCHOOL -->
-
-<div class="stage school">
-
-<h2>Bethany St. John's E.H.S School</h2>
-
-<p>Where my journey began</p>
-
-<p>Built discipline, curiosity and foundations for the future</p>
-
-</div>
-
-<!-- COLLEGE -->
-
-<div class="stage college">
-
-<h2>Mar Dionysius College</h2>
-
-<h3>B.Com</h3>
-
-<p>Expanded my knowledge in business and commerce</p>
-
-<p>University of Calicut</p>
-
-<p>2020 - 2023</p>
-
-</div>
-
-<!-- CDA -->
-
-<div class="stage cda">
-
-<h2>CDA Academy</h2>
-
-<p>Started my professional digital marketing journey</p>
-
-<p>SEO • Google Ads • SMM • Website Development</p>
-
-</div>
-
-<!-- INMAKES -->
-
-<div class="stage inmakes">
-
-<h2>Inmakes Infotech</h2>
-
-<p>Digital Marketing Intern</p>
-
-</div>
-
-<!-- PROVEDA -->
-
-<div class="stage proveda">
-
-<h2>Proveda India</h2>
-
-<p>Digital Marketing Executive</p>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section class="about">
-
-<h2>About Me</h2>
-
-<div class="card">
-
-<img src="assets/images/profile.jpg">
-
-<div>
-
-<h3>Adithyan Jayaprasath</h3>
-
-<p>Dubai, UAE</p>
-
-<p>Digital Marketing Executive</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SKILLS -->
-
-<section class="skills">
-
-<h2>Skills</h2>
-
-<div class="skill">
-<span>SEO</span>
-<div class="bar"><div data-width="95%"></div></div>
-</div>
-
-<div class="skill">
-<span>Google Ads</span>
-<div class="bar"><div data-width="90%"></div></div>
-</div>
-
-<div class="skill">
-<span>Meta Ads</span>
-<div class="bar"><div data-width="92%"></div></div>
-</div>
-
-<div class="skill">
-<span>WordPress</span>
-<div class="bar"><div data-width="90%"></div></div>
-</div>
-
-</section>
-
-<!-- TIMELINE -->
-
-<section class="timeline">
-
-<h2>Experience</h2>
-
-<div class="timeline-item">
-<h3>Proveda India</h3>
-<p>Digital Marketing Executive</p>
-<p>2024-2025</p>
-</div>
-
-<div class="timeline-item">
-<h3>Inmakes Infotech</h3>
-<p>Digital Marketing Intern</p>
-<p>2023</p>
-</div>
-
-</section>
-
-<!-- CERTIFICATIONS -->
-
-<section class="certifications">
-
-<h2>Certifications</h2>
-
-<div class="cert-grid">
-
-<div class="cert-card">
-HubSpot Digital Marketing
-</div>
-
-<div class="cert-card">
-Google Analytics
-</div>
-
-<div class="cert-card">
-Instagram Marketing
-</div>
-
-<div class="cert-card">
-CDA Digital Marketing
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section class="contact">
-
-<h2>Contact</h2>
-
-<p>Email:
-adhithyanjayaprasath2018@gmail.com
-</p>
-
-<p>Phone:
-+971 555297198
-</p>
-
-<p>Website:
-adithyansdigiverse.com
-</p>
-
-<p>LinkedIn:
-https://linkedin.com/in/adithyan-jayaprasath
-</p>
-
-</section>
-
-<script src="js/main.js"></script>
-
+    <canvas id="webgl-bg"></canvas>
+
+    <div class="story-character-container" id="character-container">
+        <div class="character-sprite young-boy" id="hero-boy"></div>
+    </div>
+
+    <main id="main-container">
+
+        <div class="story-horizontal-track" id="story-track">
+            <div class="story-horizontal-wrapper" id="story-wrapper">
+                
+                <section class="story-panel hero-panel">
+                    <div class="panel-content text-center">
+                        <h1 class="hero-title">Hello, I'm Adithyan</h1>
+                        <p class="hero-subtitle">Scroll to walk through my journey.</p>
+                    </div>
+                    <div class="scenery-layer cloud-layer-1">☁️</div>
+                    <div class="scenery-layer cloud-layer-2">☁️</div>
+                </section>
+
+                <section class="story-panel" data-age="boy">
+                    <div class="panel-content">
+                        <span class="stage-tag">Stage 01 — Where my journey began</span>
+                        <h2 class="stage-title">Bethany St. John's E.H.S School</h2>
+                        <p class="stage-desc">Built discipline, curiosity, and the core foundations for the future.</p>
+                    </div>
+                    <div class="visual-element school-building">🏫</div>
+                    <div class="visual-element school-bus">🚌</div>
+                    <div class="visual-element school-bell">🔔</div>
+                </section>
+
+                <section class="story-panel" data-age="student">
+                    <div class="panel-content">
+                        <span class="stage-tag">Stage 02 — Higher Education (2020 – 2023)</span>
+                        <h2 class="stage-title">Mar Dionysius College</h2>
+                        <h3 class="stage-subtitle">Bachelor of Commerce (B.Com)</h3>
+                        <p class="stage-desc">Expanded my knowledge in core business mechanisms and corporate commerce at the University of Calicut.</p>
+                    </div>
+                    <div class="visual-element college-campus">🏛️</div>
+                    <div class="visual-element floating-book">📚</div>
+                    <div class="visual-element grad-cap">🎓</div>
+                </section>
+
+                <section class="story-panel" data-age="student">
+                    <div class="panel-content">
+                        <span class="stage-tag">Stage 03 — Specialization (2023)</span>
+                        <h2 class="stage-title">CDA Academy</h2>
+                        <h3 class="stage-subtitle">Digital Marketing Certification</h3>
+                        <p class="stage-desc">Started my professional digital marketing journey. Mastered SEO, Google Ads, Social Media Marketing, and dynamic Web Development.</p>
+                    </div>
+                    <div class="visual-element academy-icon">💻</div>
+                    <div class="visual-element marketing-icon google-icon">🔍 SEO</div>
+                    <div class="visual-element marketing-icon ads-icon">📊 PPC</div>
+                </section>
+
+                <section class="story-panel" data-age="young-pro">
+                    <div class="panel-content">
+                        <span class="stage-tag">Stage 04 — Industry Entry (2023)</span>
+                        <h2 class="stage-title">Inmakes Infotech</h2>
+                        <h3 class="stage-subtitle">Digital Marketing Intern</h3>
+                        <p class="stage-desc">Gained valuable raw industry experience managing analytical environments and modern conversion funnels.</p>
+                        <ul class="task-list">
+                            <li>SEO support & Keyword research</li>
+                            <li>PPC assistance & Campaign monitoring</li>
+                            <li>Social media marketing & Audience targeting</li>
+                        </ul>
+                    </div>
+                    <div class="visual-element office-monitor">🖥️</div>
+                    <div class="visual-element dashboard-element">📈</div>
+                </section>
+
+                <section class="story-panel" data-age="pro">
+                    <div class="panel-content">
+                        <span class="stage-tag">Stage 05 — Professional Growth (2024 – 2025)</span>
+                        <h2 class="stage-title">Proveda India</h2>
+                        <h3 class="stage-subtitle">Digital Marketing Executive</h3>
+                        <p class="stage-desc">Owned commercial scale campaigns, driving multi-channel growth and web platform optimization strategies.</p>
+                        <ul class="task-list grid-list">
+                            <li>Meta & Google Ads Execution</li>
+                            <li>WordPress Content Management</li>
+                            <li>Campaign Optimization</li>
+                            <li>Community Engagement</li>
+                        </ul>
+                    </div>
+                    <div class="visual-element skyscraper">🏙️</div>
+                    <div class="visual-element growth-chart">🚀</div>
+                    <div class="panel-outro-text">Every step shaped who I am today.</div>
+                </section>
+
+            </div>
+        </div>
+
+        <div id="portfolio-anchor">
+
+            <section class="portfolio-section" id="about">
+                <div class="container layout-grid">
+                    <div class="profile-card">
+                        <div class="profile-avatar-placeholder">AJ</div>
+                        <h2>Adithyan Jayaprasath</h2>
+                        <p class="profile-role">Digital Marketing Executive</p>
+                        <p class="profile-loc">📍 Dubai, UAE</p>
+                    </div>
+                    <div class="about-text">
+                        <h3 class="section-heading">About Me</h3>
+                        <p class="lead-text">Hands-on Digital Marketing Executive with deep domain experience in social media ecosystems, Meta Ads, Google Ads, WordPress engineering, advanced SEO, content marketing, and deep technical conversion-rate optimization.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-section" id="skills">
+                <div class="container">
+                    <h3 class="section-heading">Expertise Matrix</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-info"><span>SEO</span><span class="skill-perc">95%</span></div>
+                            <div class="skill-bar-wrapper"><div class="skill-bar-fill" data-width="95%"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-info"><span>Google Ads</span><span class="skill-perc">90%</span></div>
+                            <div class="skill-bar-wrapper"><div class="skill-bar-fill" data-width="90%"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-info"><span>Meta Ads</span><span class="skill-perc">92%</span></div>
+                            <div class="skill-bar-wrapper"><div class="skill-bar-fill" data-width="92%"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-info"><span>Social Media Marketing</span><span class="skill-perc">88%</span></div>
+                            <div class="skill-bar-wrapper"><div class="skill-bar-fill" data-width="88%"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-info"><span>WordPress Development</span><span class="skill-perc">85%</span></div>
+                            <div class="skill-bar-wrapper"><div class="skill-bar-fill" data-width="85%"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-info"><span>Google Analytics</span><span class="skill-perc">90%</span></div>
+                            <div class="skill-bar-wrapper"><div class="skill-bar-fill" data-width="90%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-section" id="experience">
+                <div class="container">
+                    <h3 class="section-heading">Career Timeline</h3>
+                    <div class="timeline-wrapper">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2024 - 2025</div>
+                            <div class="timeline-content">
+                                <h4>Digital Marketing Executive</h4>
+                                <h5>Proveda India</h5>
+                                <p>Led paid advertising architecture across search and social channels, executed data-driven campaign optimizations, and managed corporate web infrastructures.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023</div>
+                            <div class="timeline-content">
+                                <h4>Digital Marketing Intern</h4>
+                                <h5>Inmakes Infotech</h5>
+                                <p>Developed organic traffic strategies through targeted keyword research, SEO metadata architecture, and cross-channel community acquisition campaigns.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-section" id="certs-achievements">
+                <div class="container split-grid">
+                    <div>
+                        <h3 class="section-heading">Certifications</h3>
+                        <div class="certs-list">
+                            <div class="cert-card">✨ HubSpot Digital Marketing Certification</div>
+                            <div class="cert-card">✨ Google Analytics Certification</div>
+                            <div class="cert-card">✨ Instagram Marketing Certification</div>
+                            <div class="cert-card">✨ Digital Marketing Master Certification (CDA Academy)</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="section-heading">Key Milestone</h3>
+                        <div class="achievement-card">
+                            <div class="trophy-icon">🏆</div>
+                            <h4>Organic Visibility Peak</h4>
+                            <p>Successfully designed and deployed advanced white-hat SEO architectures that scaled non-branded organic keyword rankings to Position #1 rankings on highly competitive search engine indexes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-section" id="meta-info">
+                <div class="container split-grid">
+                    <div>
+                        <h3 class="section-heading">Languages</h3>
+                        <div class="tag-cloud">
+                            <span class="tag-pill">English (Professional)</span>
+                            <span class="tag-pill">Malayalam (Native)</span>
+                            <span class="tag-pill">Hindi</span>
+                            <span class="tag-pill">Tamil</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="section-heading">Creative Vectors</h3>
+                        <div class="tag-cloud">
+                            <span class="tag-pill variant">Website Development</span>
+                            <span class="tag-pill variant">Graphic Designing</span>
+                            <span class="tag-pill variant">Photography</span>
+                            <span class="tag-pill variant">Videography</span>
+                            <span class="tag-pill variant">AI Synthesis (Image & Video)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-section" id="contact">
+                <div class="container text-center">
+                    <h3 class="section-heading">Let's Connect</h3>
+                    <p class="contact-sub">Available for opportunities globally and locally within Dubai, UAE.</p>
+                    <div class="contact-grid">
+                        <a href="mailto:adhithyanjayaprasath2018@gmail.com" class="contact-link">📧 adhithyanjayaprasath2018@gmail.com</a>
+                        <a href="tel:+971555297198" class="contact-link">📞 +971 55 529 7198</a>
+                        <a href="https://adithyansdigiverse.com" target="_blank" class="contact-link">🌐 adithyansdigiverse.com</a>
+                        <a href="https://www.linkedin.com/in/adithyan-jayaprasath/" target="_blank" class="contact-link">🔗 LinkedIn Profile</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
