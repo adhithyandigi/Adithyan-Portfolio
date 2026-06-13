@@ -1,136 +1,513 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+/* --- PREMIUM APPLE SYSTEM CONFIGURATION --- */
+:root {
+    --bg-dark: #000000;
+    --bg-light: #f5f5f7;
+    --text-white: #f5f5f7;
+    --text-dark: #1d1d1f;
+    --text-muted: #86868b;
+    --accent-blue: #0071e3;
+    --card-dark: rgba(22, 22, 23, 0.8);
+    --card-light: rgba(255, 255, 255, 0.8);
+    --font-stack: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-body{
-background:#050505;
-color:white;
-font-family:sans-serif;
-overflow-x:hidden;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-section{
-min-height:100vh;
-padding:100px 8%;
+body {
+    font-family: var(--font-stack);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-.hero{
-position:relative;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+/* Three.js Canvas Element Background layer */
+#webgl-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
 }
 
-.sun{
-width:200px;
-height:200px;
-background:#ffb84d;
-border-radius:50%;
-filter:blur(20px);
-margin-bottom:40px;
+main {
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
-.hero h1{
-font-size:5rem;
+/* --- HORIZONTAL TRACK SCROLL ENGINE --- */
+.story-horizontal-track {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.hero p{
-font-size:1.3rem;
-opacity:.7;
+.story-horizontal-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 500vw; /* 5 Total Panels */
+    height: 100vh;
+    will-change: transform;
 }
 
-.boy{
-font-size:60px;
-margin-top:50px;
+.story-panel {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
-.story{
-position:relative;
-height:500vh;
+/* Background gradient transition for hero sunrise theme */
+.hero-panel {
+    background: linear-gradient(180deg, #050b14 0%, #1a0f2e 60%, #36173d 100%);
+    justify-content: center;
+    padding-left: 0;
 }
 
-.road{
-position:fixed;
-bottom:0;
-width:100%;
-height:120px;
-background:#222;
+.text-center { text-align: center; }
+
+/* --- HERO TEXT TYPOGRAPHY --- */
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.stage{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--text-muted);
+    font-weight: 400;
 }
 
-.stage h2{
-font-size:4rem;
-margin-bottom:20px;
+/* --- SCROLL STORY ELEMENTS CONTENT CARD --- */
+.panel-content {
+    max-width: 550px;
+    background: var(--card-dark);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 10;
+    transform: translateY(30px);
+    opacity: 0;
+    will-change: transform, opacity;
 }
 
-.about,
-.skills,
-.timeline,
-.certifications,
-.contact{
-background:white;
-color:black;
+.stage-tag {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-blue);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 12px;
 }
 
-.card{
-display:flex;
-gap:30px;
-align-items:center;
+.stage-title {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    line-height: 1.2;
 }
 
-.card img{
-width:250px;
-border-radius:20px;
+.stage-subtitle {
+    font-size: 1.25rem;
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 15px;
 }
 
-.skill{
-margin:30px 0;
+.stage-desc {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 1.05rem;
 }
 
-.bar{
-height:12px;
-background:#ddd;
-border-radius:50px;
-overflow:hidden;
+.task-list {
+    margin-top: 20px;
+    list-style: none;
 }
 
-.bar div{
-width:0%;
-height:100%;
-background:black;
+.task-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: #e8e8ed;
+    font-size: 0.95rem;
 }
 
-.cert-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+.task-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: bold;
 }
 
-.cert-card{
-padding:40px;
-background:#f5f5f5;
-border-radius:20px;
-transition:.4s;
+.grid-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
-.cert-card:hover{
-transform:translateY(-10px);
+.panel-outro-text {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
 }
 
-.timeline-item{
-padding:30px;
-margin:20px 0;
-border-left:4px solid black;
+/* --- THE RUNNING SCENERY SYSTEM --- */
+.visual-element, .scenery-layer {
+    position: absolute;
+    font-size: 5rem;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Custom scenery mapping coords */
+.cloud-layer-1 { top: 15%; left: 20%; font-size: 4rem; opacity: 0.4; }
+.cloud-layer-2 { top: 25%; left: 70%; font-size: 6rem; opacity: 0.2; }
+.school-building { bottom: 20%; right: 15%; font-size: 12rem; }
+.school-bus { bottom: 15%; right: 45%; font-size: 5rem; }
+.school-bell { top: 20%; right: 30%; font-size: 4rem; }
+.college-campus { bottom: 15%; right: 15%; font-size: 14rem; }
+.floating-book { top: 20%; right: 40%; font-size: 4rem; }
+.grad-cap { top: 35%; right: 25%; font-size: 5rem; }
+.academy-icon { bottom: 20%; right: 20%; font-size: 11rem; }
+.marketing-icon { font-size: 1.2rem; background: var(--accent-blue); padding: 12px 24px; border-radius: 50px; color: white; font-weight: bold; }
+.google-icon { top: 25%; right: 40%; }
+.ads-icon { bottom: 45%; right: 15%; }
+.office-monitor { bottom: 20%; right: 25%; font-size: 10rem; }
+.dashboard-element { top: 30%; right: 45%; font-size: 6rem; }
+.skyscraper { bottom: 10%; right: 10%; font-size: 16rem; }
+.growth-chart { top: 20%; right: 35%; font-size: 7rem; }
+
+/* --- FIXED CHARACTER CONTROLLER LAYER --- */
+.story-character-container {
+    position: fixed;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 180px;
+    z-index: 100;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Character representation using production ready fallback animation shapes */
+.character-sprite {
+    width: 70px;
+    height: 130px;
+    background-color: #ffffff;
+    border-radius: 35px 35px 10px 10px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Procedural dynamic costume adjustments driven via attributes mapping */
+.character-sprite::after {
+    content: "👦";
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.2rem;
+}
+
+.character-sprite.boy { background-color: #34c759; }
+.character-sprite.student { background-color: #0071e3; }
+.character-sprite.student::after { content: "🧑‍🎓"; }
+.character-sprite.young-pro { background-color: #5856d6; }
+.character-sprite.young-pro::after { content: "🧑‍💻"; }
+.character-sprite.pro { background-color: #ff9500; }
+.character-sprite.pro::after { content: "👨‍💼"; }
+
+/* Walking Keyframe Simulation Engine triggered by script injection */
+.character-walking {
+    animation: proceduralWalk 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes proceduralWalk {
+    0% { transform: translateY(0) rotate(-3deg); }
+    100% { transform: translateY(-8px) rotate(3deg); }
+}
+
+/* --- VERTICAL PORTFOLIO SECTION DOWN --- */
+.portfolio-section {
+    position: relative;
+    padding: 140px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    z-index: 5;
+    border-bottom: 1px solid #e5e5ea;
+}
+
+/* Retain dark aesthetic on specific anchor regions */
+#contact {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    border-bottom: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.layout-grid, .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.split-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* --- APPLESQUE INTERACTION UI ELEMENTS --- */
+.section-heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+}
+
+.profile-card {
+    background: var(--card-light);
+    padding: 50px 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.profile-avatar-placeholder {
+    width: 100px;
+    height: 100px;
+    background: var(--text-dark);
+    color: var(--text-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 auto 24px;
+}
+
+.profile-role {
+    color: var(--accent-blue);
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.profile-loc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.lead-text {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #333336;
+}
+
+/* --- INTERACTIVE SKILLS DISPLAY --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.skill-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.skill-bar-wrapper {
+    width: 100%;
+    height: 6px;
+    background: #e5e5ea;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--accent-blue);
+    border-radius: 3px;
+    will-change: width;
+}
+
+/* --- PROFESSIONAL TIMELINE DISPLAY --- */
+.timeline-wrapper {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 2px;
+    height: 100%;
+    background: #d2d2d7;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    border: 3px solid var(--bg-light);
+}
+
+.timeline-date {
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 6px;
+}
+
+.timeline-content h4 { font-size: 1.4rem; margin-bottom: 4px; }
+.timeline-content h5 { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 12px; }
+
+/* --- ARCHITECTURE GRID CARDS --- */
+.cert-card, .achievement-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover, .achievement-card:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-card {
+    padding: 40px;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+}
+
+.trophy-icon { font-size: 3.5rem; margin-bottom: 20px; }
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tag-pill {
+    background: #e5e5ea;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.tag-pill.variant {
+    background: white;
+    border: 1px solid #d2d2d7;
+}
+
+/* --- CONTACT INTERFACE FOOTER --- */
+.contact-sub {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-link {
+    color: var(--text-white);
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background: var(--text-white);
+    color: var(--text-dark);
+}
+
+/* --- RESPONSIVE BREAKPOINTS ENGINE --- */
+@media (max-width: 968px) {
+    .story-horizontal-wrapper { width: 500vw; }
+    .layout-grid, .split-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .skills-grid, .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .story-panel { padding-left: 5%; }
+    .visual-element { transform: scale(0.6); }
 }
